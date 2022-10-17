@@ -1,0 +1,76 @@
+<form (ngSubmit)="onFormsSubmit(form)" #form="ngForm">
+  <h2>Template Driven form</h2>
+  <div class="form-group">
+    <label for="e">Enter Your Name</label>
+    <input
+      ngModel
+      name="name"
+      type="text"
+      placeholder="Enter Here"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="">Enter Your surname</label>
+    <input
+      ngModel
+      name="surName"
+      #surName="ngModel"
+      [ngStyle]="{
+        'border-color': !surName.valid && surName.dirty ? 'red' : 'grey'
+      }"
+      type="text"
+      placeholder="Enter Here"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="">Enter Your email</label>
+    <input
+      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+      required
+      ngModel
+      name="email"
+      type="text"
+      placeholder="Enter Here"
+      class="form-control"
+    />
+  </div>
+
+  <div ngModelGroup="address">
+    <div class="form-group">
+      <label for="">Enter your country</label>
+      <input
+        ngModel
+        name="country"
+        type="text"
+        placeholder="enter here"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Enter your city</label>
+      <input
+        ngModel
+        name="city"
+        type="text"
+        placeholder="enter here"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="">Enter Your message</label>
+    <textarea ngModel name="message" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <button
+      [disabled]="!form.valid"
+      type="submit"
+      class="btn btn-dark col-md-3 d-block"
+    >
+      Save
+    </button>
+  </div>
+</form>
